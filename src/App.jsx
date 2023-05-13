@@ -133,6 +133,7 @@ function App() {
                   <Route path="/" element={<CatalogPage />} />
                   <Route path="/favorites" element={<FavoritesPage />} />
                   <Route path="/product/:id" element={<ProductPage />}></Route>
+                  <Route path="*" element={<div>NOT FOUND 404</div>} />
                 </Routes>
               ) : (
                 <Navigate to={"/not-found"} />
