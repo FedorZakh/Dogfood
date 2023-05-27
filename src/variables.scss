@@ -1,0 +1,11 @@
+$color-main: #83833b;
+$sidebar-width: 230px;
+$mobile-width: 375px;
+
+
+@mixin mixin-transform($props) {
+    -webkit-transform: $props;
+    -moz-transform : $props;
+    -ms-transform: $props; 
+    transform: $props;
+}

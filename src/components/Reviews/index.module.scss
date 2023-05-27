@@ -1,0 +1,51 @@
+
+.reviews {
+    margin-top: 20px;
+    &__author {
+      align-items: center;
+      font-family: "Nunito";
+      font-style: normal;
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 24px;
+      color: #1a1a1a;
+    }
+    &__date {
+      padding: 0 0 0 10px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      color: #7b8e98;
+    }
+    &__list {
+      display: flex;
+      flex-direction: column;
+    }
+    &__hr {
+      height: 1px;
+      background: #eceff1;
+    }
+    &__item {
+      padding: 20px 0;
+    }
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem 0;
+      width: 50%;
+    }
+    &__basket {
+      cursor: pointer;
+      margin-left: 1rem;
+      stroke: grey;
+    }
+    &__controls {
+        display: flex;
+        gap: 2rem;
+        flex-direction: column;
+        width: fit-content;
+        padding: 2rem 0;
+    }
+  }
+  

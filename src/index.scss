@@ -1,0 +1,55 @@
+@import "./variables.scss";
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.container {
+  max-width: 1024px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0 auto;
+}
+.content {
+  padding: 20px 0;
+}
+
+.incontent {
+  padding: 20px 1rem;
+}
+
+.form-example {
+  display: grid;
+  max-width: 350px;
+  gap: 10px;
+}
+.form__input {
+  border-radius: 10px;
+  background-color: #ffffff;
+  max-width: 200px;
+  caret-color: #ffe44d;
+  font-size: 16px;
+  line-height: 20px;
+  color: #1a1a1a;
+  padding: 6px 20px;
+  border: 1px solid lightgrey;
+  outline: none;
+}
+.form__pass {
+  position: relative;
+  &__icon {
+    position: absolute;
+    right: 20px;
+    top: 6px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,8 @@
+.icon {
+  fill: blue !important;
+}
+
+.wrapper > .ant-btn {
+  color: red;
+  background-color: yellow;
+}

@@ -1,0 +1,159 @@
+@import "../../variables.scss";
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 10px;
+  &__light {
+    background-color: transparent;
+  }
+  &__dark {
+    background-color: darkgrey;
+  }
+  &:hover {
+    box-shadow: 0 2px 4px rgba(40, 41, 61, 0.04),
+      0 8px 16px rgba(96, 97, 112, 0.16);
+  }
+  &:focus-within {
+    box-shadow: 0 0 1px rgba(40, 41, 61, 0.16),
+      0 0.5px 2px rgba(96, 97, 112, 0.24);
+  }
+  &__desc {
+    font-size: 16px;
+    padding-top: 14px;
+    font-weight: 600;
+    position: relative;
+  }
+  &__image {
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+
+  &__old-price {
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 600;
+    line-height: 14px;
+    text-decoration: line-through;
+    display: block;
+    height: 14px;
+  }
+
+  &__price {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  &__price_type_discount {
+    color: #f44336;
+  }
+
+  &__weight {
+    font-size: 12px;
+    line-height: 14px;
+    color: #7b8e98;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  &__name {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  &__discount {
+    padding: 2px 8px;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+    background-color: #f44336;
+    border-radius: 20px;
+  }
+
+  &__sticky {
+    position: absolute;
+    padding: 10px;
+  }
+
+  &__sticky_type_top-left {
+    top: 0;
+    left: 0;
+  }
+
+  &__sticky_type_top-right {
+    top: 0;
+    right: 0;
+  }
+
+  &__favorite {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+  }
+  &__favorite_active > svg {
+    fill: red;
+    stroke: red;
+  }
+
+  &__cart {
+    margin-top: auto;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: currentColor;
+  }
+}
+
+.btn {
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  border-radius: 55px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.btn_type_primary {
+  background-color: #ffe44d;
+}
+.btn_type_primary:hover {
+  background-color: #ffaa0d;
+  color: #f44336;
+}
+
+.tag {
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.tag_type_new {
+  background-color: #03a9f4;
+  color: #ffffff;
+}
+.tag_type_sale {
+  background-color: #01a54e;
+  color: #ffffff;
+}
+svg {
+  fill: transparent;
+  stroke: black;
+}
+.card__liked > svg {
+}

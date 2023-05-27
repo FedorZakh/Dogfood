@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useContext } from "react";
-import "./index.css";
+import "./index.scss";
 import { ReactComponent as Like } from "./img/like.svg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 import { CardsContext } from "../../context/cardContext";
 import { ThemeContext } from "../../context/themeContext";
@@ -54,7 +56,6 @@ export const Card = ({
         </div>
         <p className="card__name">{name}</p>
       </Link>
-
       <span className="card__card btn btn_type_primary">В Корзину</span>
     </div>
   );
