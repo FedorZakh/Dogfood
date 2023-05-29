@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "../index.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../../utils/api";
 import { BaseButton } from "../../Button/Button";
 
@@ -26,11 +26,12 @@ export const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "onBlur" });
-
+  const navigate = useNavigate();
   const sendData = async (data) => {
     try {
       const res = await api.signin(data);
       localStorage.setItem("token", res.token);
+      navigate("/");
     } catch (error) {
       alert("Ой!");
     }
