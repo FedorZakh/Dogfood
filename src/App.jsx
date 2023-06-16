@@ -35,15 +35,17 @@ function createMarkup() {
 }
 
 function App() {
+  // const basket = useSelector((state) => state.basket.goods);
   const [isAuthorized, setAuth] = useState(true);
   const [modalActive, setModalActive] = useState(false);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { search } = useSelector((s) => s.products);
-
   const debounceValueInApp = useDebounce(search);
+  // useEffect(() => {
+  //   localStorage.setItem("basket", JSON.stringify(basket));
+  // }, [basket]);
+
   useEffect(() => {
     if (debounceValueInApp === null) {
       return;
