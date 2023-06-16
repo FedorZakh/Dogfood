@@ -1,13 +1,13 @@
 
 
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { Rating } from "../Rating/Rating";
 import { BaseButton } from "../Button/Button";
 
 import s from './index.module.scss'
 import { useForm } from "react-hook-form";
 import { ReactComponent as Basket } from '../../assets/img/basket.svg'
-import { CardsContext } from "../../context/cardContext";
+import { useSelector } from "react-redux";
 
 const timeOptions = {
     day: 'numeric',
@@ -21,7 +21,9 @@ export const Reviews = ({ onSendReview, reviews, onDeleteReview }) => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" });
 
-    const { user } = useContext(CardsContext);
+    const { data: user } = useSelector((s) => s.user)
+
+
 
 
 
@@ -38,9 +40,7 @@ export const Reviews = ({ onSendReview, reviews, onDeleteReview }) => {
         setShowForm(false)
     }
 
-
     return (<>
-
         <div className={s.reviews}>
             <div className={s.reviews__controls}>
             <span className={s.price}>Отзывы</span>

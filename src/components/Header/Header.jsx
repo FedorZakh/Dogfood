@@ -8,17 +8,12 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Basket } from "./img/basket.svg";
 import { ReactComponent as Profile } from "./img/profile.svg";
 import { ReactComponent as Like } from "../Card/img/like.svg";
-import { CardsContext } from "../../context/cardContext";
+import { useSelector } from "react-redux";
 
-export const Header = (props) => {
-  const setSearchQuery = (path) => {
-    props.setSearch(path);
-  };
+export const Header = ({ setModalActive, isAuthorized }) => {
+  const { favorites } = useSelector((s) => s.products);
 
   const location = useLocation();
-
-  const { favorites, setModalActive } = useContext(CardsContext);
-
   return (
     <div className="header">
       <div className="container">
@@ -26,7 +21,7 @@ export const Header = (props) => {
           <Link to={"/"}>
             <LogoSvg className="logo" />
           </Link>
-          {location.pathname === "/" && <Search setSearch={setSearchQuery} />}
+          {location.pathname === "/" && <Search />}
           <div className="header__icons">
             <Link className="header__fav" to={"/favorites"}>
               <Like className="header__like" />
@@ -34,14 +29,18 @@ export const Header = (props) => {
                 <span className="header__bubble">{favorites.length}</span>
               )}
             </Link>
-            <Basket className="header__icon" />
-            <Link to={"/login"} onClick={() => setModalActive(true)}>
-              <Profile className="header__icon" />
+
+            <Link to={"/basket"}>
+              <Basket className="header__icon" />
             </Link>
+            {isAuthorized ? (
+              <Link to={"/profile"}>Профиль</Link>
+            ) : (
+              <Link to={"/login"} onClick={() => setModalActive(true)}>
+                <Profile className="header__icon" />
+              </Link>
+            )}
           </div>
-          {localStorage.getItem("token") !== null && (
-            <h3>Добро пожаловать в магазин!</h3>
-          )}
         </div>
       </div>
     </div>

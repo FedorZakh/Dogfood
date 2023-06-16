@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import cn from "classnames";
 
 import "./index.scss";
+import { RegistrationForm } from "../Form/RegistrationForm";
 
 export const Modal = ({ setModalActive, modalActive, children }) => {
   const closeOnEsc = useCallback(

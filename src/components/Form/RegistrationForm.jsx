@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
-import { api } from "../../utils/api";
 import { Link } from "react-router-dom";
 
 export const RegistrationForm = ({ isRequired = true }) => {
   const [type, setType] = useState(true);
-  const [tags, setTags] = useState("");
 
   const {
     register,
@@ -22,12 +20,12 @@ export const RegistrationForm = ({ isRequired = true }) => {
   const nameRegister = {
     required: {
       value: isRequired,
-      message: "Имя тоже обязательно!",
+      message: "Имя обязательно!",
     },
     maxLength: { value: 4, message: "4 is max" },
     minLength: { value: 2, message: "2 is min" },
   };
-  const emailRegister = { required: "Имя тоже обязательно!" };
+  const emailRegister = { required: "Имя обязательно!" };
   const passwordRegister = {
     required: {
       value: isRequired,

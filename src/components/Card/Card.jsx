@@ -1,13 +1,9 @@
-/* eslint-disable no-unused-vars */
-
-import React, { useContext } from "react";
 import "./index.scss";
 import { ReactComponent as Like } from "./img/like.svg";
-import { Link, NavLink } from "react-router-dom";
-import { UserContext } from "../../context/userContext";
-import { CardsContext } from "../../context/cardContext";
-import { ThemeContext } from "../../context/themeContext";
-
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchChangeProductLike } from "../../storage/slices/productsSlice";
+import { actions } from "../../storage/slices/basketSlice";
 export const Card = ({
   name,
   price,
@@ -20,18 +16,21 @@ export const Card = ({
   product,
   ...args
 }) => {
-  const user = useContext(UserContext);
-  const { handleLike } = useContext(CardsContext);
+  const { data: user } = useSelector((s) => s.user);
+
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    handleLike(product, isLiked);
+    dispatch(fetchChangeProductLike({ product: product, wasLiked: isLiked }));
   };
-
-  const theme = useContext(ThemeContext);
+  const addToCart = (product) => {
+    dispatch(actions.addGoods(product));
+    console.log(product);
+  };
 
   const isLiked = likes.some((e) => e === user._id);
   return (
-    <div className={` card card__${theme ? "light" : "dark"} `}>
+    <div className={` card card__light`}>
       <div className="card__sticky card__sticky_type_top-left">
         {!!discount && <span className="card__discount">-{discount}%</span>}
         {args.tags.map((e) => (
@@ -56,7 +55,13 @@ export const Card = ({
         </div>
         <p className="card__name">{name}</p>
       </Link>
-      <span className="card__card btn btn_type_primary">В Корзину</span>
+
+      <span
+        className="card__card btn btn_type_primary"
+        onClick={() => addToCart({ product: product, count: 1 })}
+      >
+        В Корзину
+      </span>
     </div>
   );
 };

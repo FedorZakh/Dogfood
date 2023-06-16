@@ -1,19 +1,17 @@
-/* eslint-disable no-unused-vars */
-
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Product } from "../../components/Product/Product";
 import { api } from "../../utils/api";
 import { useParams } from "react-router-dom";
-import { CardsContext } from "../../context/cardContext";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchChangeProductLike } from "../../storage/slices/productsSlice";
+import { openNotification } from "../../components/Notification/Notification";
 
 export const ProductPage = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
-  const res = useParams();
+  const dispatch = useDispatch();
 
-  const { productRating, user, handleLike } = useContext(CardsContext);
-
-  console.log({ productRating });
+  const user = useSelector((state) => state.user.data);
 
   useEffect(() => {
     if (id) {
@@ -22,8 +20,8 @@ export const ProductPage = () => {
   }, [id]);
 
   const onProductLike = useCallback(
-    async (item, isLikedProduct) => {
-      const wasLiked = await handleLike(item, isLikedProduct);
+    (item, wasLiked) => {
+      dispatch(fetchChangeProductLike({ product: item, wasLiked: wasLiked }));
       if (wasLiked) {
         const filteredLikes = item.likes.filter((e) => e !== user?._id);
         setProduct((s) => ({ ...s, likes: filteredLikes }));
@@ -32,13 +30,18 @@ export const ProductPage = () => {
         setProduct((s) => ({ ...s, likes: addLikes }));
       }
     },
-    [handleLike, user?._id]
+    [dispatch, user?._id]
   );
 
   const sendReview = useCallback(
     async (data) => {
-      const result = await api.addProductReview(product._id, data);
-      setProduct(() => ({ ...result }));
+      try {
+        const result = await api.addProductReview(product._id, data);
+        setProduct(() => ({ ...result }));
+        openNotification("success", "Успешно", "Вы вошли");
+      } catch (error) {
+        openNotification("error", "Ошибка", "Ваш отзыв не удалось отправить");
+      }
     },
     [product._id]
   );
@@ -63,7 +66,7 @@ export const ProductPage = () => {
           onDeleteReview={onDeleteReview}
         />
       ) : (
-        <div>Загрузка...</div>
+        <div>Loading...</div>
       )}
     </>
   );

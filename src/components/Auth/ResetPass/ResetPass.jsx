@@ -32,7 +32,7 @@ export const ResetPass = () => {
         console.log(res);
         setHaveToken(true);
       } catch (error) {
-        alert("Ой!");
+        alert("Ошибка!");
       }
     }
   };

@@ -4,6 +4,7 @@ import "../index.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../../utils/api";
 import { BaseButton } from "../../Button/Button";
+import { openNotification } from "../../Notification/Notification";
 
 export const emailRegister = { required: "Имя обязательно!" };
 export const passwordRegister = {
@@ -20,20 +21,22 @@ export const passwordRegister = {
 
 export const LoginForm = () => {
   const [type, setType] = useState(true);
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "onBlur" });
-  const navigate = useNavigate();
+
   const sendData = async (data) => {
     try {
       const res = await api.signin(data);
       localStorage.setItem("token", res.token);
       navigate("/");
+      openNotification("success", "Успешно", "Ваш отзыв отправлен");
     } catch (error) {
-      alert("Ой!");
+      openNotification("error", "Ошибка", "Неправильный логин пароль");
     }
   };
 

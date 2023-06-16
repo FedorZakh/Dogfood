@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
+// import { api } from "../../utils/api";
 import "../index.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { api } from "../../../utils/api";
 import { BaseButton } from "../../Button/Button";
 import { emailRegister, passwordRegister } from "../Login/Login";
@@ -16,14 +17,12 @@ export const RegisterForm = () => {
     formState: { errors },
   } = useForm({ mode: "onBlur" });
 
-  const navigate = useNavigate();
   const sendData = async (data) => {
     try {
       const res = await api.signup(data);
-      alert("Поздравляем вы успешно зарегистрированны");
-      navigate("/login");
+      console.log(res);
     } catch (error) {
-      alert(`ошибка: ${error}`);
+      alert("Ошибка!");
     }
   };
 
