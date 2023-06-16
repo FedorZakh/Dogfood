@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   goods: [],
@@ -22,19 +22,15 @@ const basketSlice = createSlice({
       }
     },
     removeGoods: (state, { payload }) => {
-      // useLocalStorage
       const productInBasket = state.goods.find(
         (e) => e.product._id === payload.product._id
       );
       if (productInBasket) {
         productInBasket.count = productInBasket.count - payload.count;
       }
-
-      // state.goods
     },
   },
 });
-// ----------------------------------------------------
 
 export const { actions } = basketSlice;
 
