@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
   goods: [],
 };
-// localStorage.setItem("basket", JSON.stringify(initialState));
+
 const basketSlice = createSlice({
   name: "basket",
   initialState: initialState,
