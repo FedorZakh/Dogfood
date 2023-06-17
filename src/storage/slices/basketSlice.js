@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+const locStorage =
+  localStorage.getItem("basket") !== null
+    ? JSON.parse(localStorage.getItem("basket")).goods
+    : [];
+// JSON.parse(localStorage.getItem("basket")).goods || [];
 const initialState = {
-  goods: [],
+  goods: locStorage,
+  // goods: JSON.parse(localStorage.getItem("basket")).goods,
+  // goods: [],
 };
 
 const basketSlice = createSlice({
@@ -12,7 +18,6 @@ const basketSlice = createSlice({
       const productInBasket = state.goods.find(
         (e) => e.product._id === payload.product._id
       );
-      localStorage.setItem("basket", JSON.stringify(state));
       if (productInBasket) {
         const order = productInBasket.count + payload.count;
         productInBasket.count =
@@ -20,6 +25,7 @@ const basketSlice = createSlice({
       } else {
         state.goods.push(payload);
       }
+      localStorage.setItem("basket", JSON.stringify(state));
     },
     removeGoods: (state, { payload }) => {
       const productInBasket = state.goods.find(

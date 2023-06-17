@@ -29,22 +29,18 @@ import {
 import { parseJwt } from "./utils/utils";
 import { ChartPage } from "./pages/ChartPage/ChartPage";
 import { BasketPage } from "./pages/BasketPage/BasketPage";
-
+// !!!!!!!!!
 function createMarkup() {
   return { __html: `<div>HELLLLLO</div>` };
 }
-
+// !!!!!!!!
 function App() {
-  // const basket = useSelector((state) => state.basket.goods);
   const [isAuthorized, setAuth] = useState(true);
   const [modalActive, setModalActive] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { search } = useSelector((s) => s.products);
   const debounceValueInApp = useDebounce(search);
-  // useEffect(() => {
-  //   localStorage.setItem("basket", JSON.stringify(basket));
-  // }, [basket]);
 
   useEffect(() => {
     if (debounceValueInApp === null) {
@@ -123,7 +119,7 @@ function App() {
             />
             <Route path="/stylebook" element={<AntdPage />} />
             <Route path="/chart" element={<ChartPage />} />
-            <Route path="*" element={<div>NOT FOUND 404</div>} />
+            <Route path="*" element={<div>404</div>} />
           </Routes>
         ) : (
           <Navigate to={"/not-found"} />

@@ -25,7 +25,6 @@ export const Card = ({
   };
   const addToCart = (product) => {
     dispatch(actions.addGoods(product));
-    console.log(product);
   };
 
   const isLiked = likes.some((e) => e === user._id);

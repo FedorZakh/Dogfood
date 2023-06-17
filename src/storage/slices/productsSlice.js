@@ -1,5 +1,3 @@
-// initial state ----------------------------------------------------
-
 import { openNotification } from "../../components/Notification/Notification";
 import {
   CHEAPEST,
@@ -26,12 +24,8 @@ const initialState = {
   favorites: [],
   currentProduct: {},
   search: null,
-  chartsData: [] 
+  chartsData: [],
 };
-// ----------------------------------------------------
-
-// actions
-// ----------------------------------------------------
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -49,7 +43,6 @@ export const fetchProducts = createAsyncThunk(
 export const fetchChangeProductLike = createAsyncThunk(
   "products/fetchChangeProductLike",
   async function (data, arg) {
-    // here will be in data -> { product: product, wasLiked: isLiked }
     try {
       const updatedCard = await api.changeProductLike(
         data.product._id,
@@ -73,11 +66,6 @@ export const searchProductsByQuery = createAsyncThunk(
     }
   }
 );
-
-// ----------------------------------------------------
-
-// slice // reducer
-// ----------------------------------------------------
 
 const products = createSlice({
   name: "products",
@@ -121,11 +109,9 @@ const products = createSlice({
     },
     getChartData: (state, action) => {
       console.log({ state });
-      
     },
   },
   extraReducers: (builder) => {
-    // ПОЛУЧАЕМ СПИСОК ПРОДУКТОВ
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       const authorCards = filteredCards(action.payload.products) ?? [];
       state.products = authorCards;
@@ -134,23 +120,17 @@ const products = createSlice({
       );
       state.total = action.payload.total;
     });
-    // Меняем лайк на продукте (на странице продукта или на странице каталога)
     builder.addCase(fetchChangeProductLike.fulfilled, (state, action) => {
-      // const { updatedCard, wasLiked } = payload;
       const updatedCard = action.payload.updatedCard;
       const wasLiked = action.payload.wasLiked;
-      // ОБНОВЛЯЕМ состояние карточек(продуктов) внутри слайса Продукты
       state.products = state.products.map((e) =>
         e._id === updatedCard?._id ? updatedCard : e
       );
-      // ОБНОВЛЯЕМ состояние избранных карточек(продуктов) внутри слайса Продукты
       if (wasLiked) {
-        // favorites/ убавляем
         state.favorites = state.favorites.filter(
           (f) => f._id !== updatedCard._id
         );
       } else {
-        // favorites/ добавляем
         state.favorites = [...state.favorites, updatedCard];
       }
     });
@@ -163,15 +143,10 @@ const products = createSlice({
       state.error = action.payload;
       openNotification("error", "Error", action.payload.message);
     });
-    builder.addMatcher(isLoading, (state) => {
-      // state.loading = true;
-    });
+    builder.addMatcher(isLoading, (state) => {});
   },
 });
-// ----------------------------------------------------
 
 export const { sortedProducts, setSearch, getChartData } = products.actions;
-// export const setList = products.actions.setList;
-// export const setSearch = products.actions.setSearch;
 
 export default products.reducer;
