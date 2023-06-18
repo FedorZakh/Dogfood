@@ -126,8 +126,14 @@
   display: inline-block;
   transition: background-color 0.3s;
 }
-
+.card_btn {
+  flex: auto;
+  padding: auto;
+  margin: auto;
+}
 .btn_type_primary {
+  padding: 5px;
+  margin: 5px;
   background-color: #ffe44d;
 }
 .btn_type_primary:hover {

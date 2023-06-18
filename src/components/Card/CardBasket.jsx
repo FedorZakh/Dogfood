@@ -15,6 +15,9 @@ export const CardBasket = ({
 
   ...args
 }) => {
+  const count = useSelector((state) => state.basket.goods);
+
+  console.log("!!!!!", count[0].count);
   return (
     <div className={` card card__light`}>
       <div className="card__sticky card__sticky_type_top-left">
@@ -30,18 +33,21 @@ export const CardBasket = ({
         <div className="card__desc">
           <span className="card__price">{price}p</span>
           <span className="card__weight">{wight}</span>
+          <span className="card__weight">{count[1].count}шт</span>
         </div>
         <p className="card__name">{name}</p>
       </Link>
-
-      <span
-        onClick={() => {
-          alert("Поздравляю! Заказ оформлен");
-        }}
-        className="card__card btn btn_type_primary"
-      >
-        Заказать
-      </span>
+      <div className="card_btn">
+        <span
+          onClick={() => {
+            alert("Поздравляю! Заказ оформлен");
+          }}
+          className="card__card btn btn_type_primary"
+        >
+          Заказать
+        </span>
+        <span className="card__card btn btn_type_primary">Удалить</span>
+      </div>
     </div>
   );
 };
