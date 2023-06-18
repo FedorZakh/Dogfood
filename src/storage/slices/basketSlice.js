@@ -31,6 +31,7 @@ const basketSlice = createSlice({
       if (productInBasket) {
         productInBasket.count = productInBasket.count - payload.count;
       }
+      localStorage.removeItem("basket");
     },
   },
 });

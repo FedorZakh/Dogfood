@@ -1,19 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../../storage/slices/basketSlice";
-import { CardBasket } from "../../components/Card/CardBasket";
+import { CardShop } from "../../components/CardShop/CardShop";
+
 export const BasketPage = () => {
   const cardBasket = useSelector((state) => state.basket.goods);
-  console.log(cardBasket);
 
   return (
     <div className="cards">
       <div className="cards">
         {cardBasket.map((item) => {
           return (
-            <CardBasket
+            <CardShop
               key={item.product._id}
               {...item.product}
               product={item.product}
+              count={item.count}
             />
           );
         })}

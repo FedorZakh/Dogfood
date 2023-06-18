@@ -46,7 +46,6 @@ export const Product = ({
   const dispatch = useDispatch();
   const addToCart = (product) => {
     dispatch(actions.addGoods(product));
-    console.log(product);
   };
   return (
     <div className={`${s.product} container`}>
