@@ -3,11 +3,8 @@ const locStorage =
   localStorage.getItem("basket") !== null
     ? JSON.parse(localStorage.getItem("basket")).goods
     : [];
-// JSON.parse(localStorage.getItem("basket")).goods || [];
 const initialState = {
   goods: locStorage,
-  // goods: JSON.parse(localStorage.getItem("basket")).goods,
-  // goods: [],
 };
 
 const basketSlice = createSlice({
