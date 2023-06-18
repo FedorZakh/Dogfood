@@ -1,0 +1,10 @@
+.basketPage {
+  display: flex;
+  flex-direction: column;
+}
+.textcart {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100% !important;
+  max-width: initial;
+}

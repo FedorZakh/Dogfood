@@ -41,15 +41,7 @@ export const CardShop = ({
       </Link>
       <div className="todo_btn">
         <span
-          onClick={() => {
-            alert("Поздравляю! Заказ оформлен");
-          }}
-          className="todo__todo btn btn_type_primary"
-        >
-          Заказать
-        </span>
-        <span
-          onClick={() => removeGoods({ product: product, count })}
+          onClick={() => removeGoods({ product: product, count: count })}
           className="todo__todo btn btn_type_primary"
         >
           Удалить

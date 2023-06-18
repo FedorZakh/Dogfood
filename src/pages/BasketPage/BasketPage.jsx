@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../../storage/slices/basketSlice";
 import { CardShop } from "../../components/CardShop/CardShop";
-
+import "./index.scss";
 export const BasketPage = () => {
   const cardBasket = useSelector((state) => state.basket.goods);
 
   return (
-    <div className="cards">
+    <div className="basketPage">
       <div className="cards">
         {cardBasket.map((item) => {
           return (
@@ -18,6 +18,16 @@ export const BasketPage = () => {
             />
           );
         })}
+      </div>
+      <div className="textcart">
+        <span>Доставка по всему Миру!</span>
+        <span>Доставка курьером — от 399 ₽</span>
+        <span>Доставка курьером — от 399 ₽</span>
+      </div>
+      <div>
+        {cardBasket.reduce((acc, val) => {
+          return acc + val.product.price * val.count;
+        }, 0)}
       </div>
     </div>
   );
