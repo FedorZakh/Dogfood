@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
-// import { api } from "../../utils/api";
 import "../index.scss";
 import { Link } from "react-router-dom";
 import { api } from "../../../utils/api";

@@ -1,5 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
-import { actions } from "../../storage/slices/basketSlice";
+import { useSelector } from "react-redux";
 import { CardShop } from "../../components/CardShop/CardShop";
 import "./index.scss";
 export const BasketPage = () => {
@@ -34,7 +33,3 @@ export const BasketPage = () => {
     </div>
   );
 };
-
-//////////////////////////
-/* <button onClick={()=> dispatch(actions.addGoods({ product: { _id: 1 }, count: 1 }))}>click</button>
-    <button onClick={()=> dispatch(actions.removeGoods({ product: { _id: 1 }, count: 1 }))}>remove</button> */

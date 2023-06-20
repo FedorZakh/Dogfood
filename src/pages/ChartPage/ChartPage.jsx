@@ -26,7 +26,6 @@ export const ChartPage = () => {
 
   useEffect(() => {
     if (products?.length) {
-      console.log({ products });
       dispatch(getChartData());
     }
   }, [dispatch, products]);

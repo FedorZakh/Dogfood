@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import "./index.css";
 
 import { ReactComponent as LogoSvg } from "../Logo/logo.svg";

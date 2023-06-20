@@ -19,7 +19,6 @@ export const getMyUser = createAsyncThunk(
 );
 
 export const updateUser = createAsyncThunk("updateUser", async function (data) {
-  console.log({ data });
   if (data.avatar) {
     const res = await api.updateUserAvatar({ avatar: data.avatar });
     return res;
