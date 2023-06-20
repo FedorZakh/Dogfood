@@ -19,7 +19,7 @@ export const Footer = () => {
       </div>
       <div className="footercontacts">
         <span>Мы на связи</span>
-        <div className="footercontacts-phone">
+        <div className="footercontacts">
           <span>8(999) 00-00-00</span>
           <span>dogfood@mail.ru</span>
         </div>
