@@ -8,7 +8,6 @@ import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 import { ProductPage } from "./pages/ProductPage/ProductPage";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { FavoritesPage } from "./pages/FavoritesPage/FavoritesPage";
-import { AntdPage } from "./pages/AntdPage/AntdPage";
 import { Modal } from "./components/Modal/Modal";
 import { LoginForm } from "./components/Auth/Login/Login";
 import { RegisterForm } from "./components/Auth/Register/Register";
@@ -107,7 +106,6 @@ function App() {
                 </Modal>
               }
             />
-            <Route path="/stylebook" element={<AntdPage />} />
             <Route path="/chart" element={<ChartPage />} />
             <Route path="*" element={<div>404</div>} />
           </Routes>

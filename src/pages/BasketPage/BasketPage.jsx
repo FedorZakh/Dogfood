@@ -24,10 +24,12 @@ export const BasketPage = () => {
         <span>Доставка курьером — от 399 ₽</span>
         <span>Доставка курьером — от 399 ₽</span>
       </div>
-      <div>
+      <div className="textsum">
+        Сумма заказа{" "}
         {cardBasket.reduce((acc, val) => {
           return acc + val.product.price * val.count;
-        }, 0)}
+        }, 0)}{" "}
+        рублей
       </div>
     </div>
   );
