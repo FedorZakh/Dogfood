@@ -1,0 +1,30 @@
+.footer {
+  background: #ffe44d;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 30px;
+  &links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    gap: 16px;
+    width: 160px;
+    height: 120px;
+  }
+
+  &contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &-phone {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+}

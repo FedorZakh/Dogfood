@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { Header } from "./components/Header/Header";
-
+import { Footer } from "./components/Footer/Footer";
 import { useDebounce } from "./hooks/hooks";
 import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 import { ProductPage } from "./pages/ProductPage/ProductPage";
@@ -115,7 +115,7 @@ function App() {
           <Navigate to={"/not-found"} />
         )}
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
