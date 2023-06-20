@@ -34,7 +34,7 @@ export const LoginForm = () => {
       const res = await api.signin(data);
       localStorage.setItem("token", res.token);
       navigate("/");
-      openNotification("success", "Успешно", "Ваш отзыв отправлен");
+      openNotification("success", "Успешно");
     } catch (error) {
       openNotification("error", "Ошибка", "Неправильный логин пароль");
     }

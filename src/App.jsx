@@ -6,13 +6,7 @@ import { Header } from "./components/Header/Header";
 import { useDebounce } from "./hooks/hooks";
 import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 import { ProductPage } from "./pages/ProductPage/ProductPage";
-import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { FavoritesPage } from "./pages/FavoritesPage/FavoritesPage";
 import { AntdPage } from "./pages/AntdPage/AntdPage";
 import { Modal } from "./components/Modal/Modal";
@@ -29,11 +23,7 @@ import {
 import { parseJwt } from "./utils/utils";
 import { ChartPage } from "./pages/ChartPage/ChartPage";
 import { BasketPage } from "./pages/BasketPage/BasketPage";
-// !!!!!!!!!
-function createMarkup() {
-  return { __html: `<div>HELLLLLO</div>` };
-}
-// !!!!!!!!
+
 function App() {
   const [isAuthorized, setAuth] = useState(true);
   const [modalActive, setModalActive] = useState(false);

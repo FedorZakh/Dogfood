@@ -24,7 +24,7 @@ export const ResetPass = () => {
         });
         localStorage.setItem("token", res.token);
       } catch (error) {
-        alert("OOooops");
+        alert("Ошибка");
       }
     } else {
       try {
