@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { Header } from "./components/Header/Header";

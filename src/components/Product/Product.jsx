@@ -22,11 +22,12 @@ export const Product = ({
 }) => {
   const [isLikedProduct, setIsProductLike] = useState(false);
 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const countPlus = () => setCount(count + 1);
   const countMinus = () => setCount(count - 1);
   const { data: user } = useSelector((s) => s.user);
 
+  const quantity = product.stock;
   const getDiscountPrice = (discount, price) => {
     return (price - Math.floor((price * discount) / 100)).toFixed(0);
   };
@@ -82,19 +83,27 @@ export const Product = ({
 
           <div className={s.controls}>
             <div className={s.controls__cart__left}>
-              {count > 0 && (
+              {count > 1 && (
                 <span onClick={countMinus} className={s.controls__minus}>
                   -
                 </span>
               )}
               <span className={s.controls__cart__num}>{count}</span>
-              <span onClick={countPlus} className={s.controls__plus}>
-                +
-              </span>
+              {count < quantity && (
+                <span onClick={countPlus} className={s.controls__plus}>
+                  +
+                </span>
+              )}
             </div>
-            <BaseButton onClick={() => addToCart({ product: product, count })}>
-              В корзину
-            </BaseButton>
+            {quantity === 0 ? (
+              <span>Товара нет</span>
+            ) : (
+              <BaseButton
+                onClick={() => addToCart({ product: product, count })}
+              >
+                В корзину
+              </BaseButton>
+            )}
           </div>
           <button
             className={cn(s.favorite, { [s.favoriteActive]: isLikedProduct })}

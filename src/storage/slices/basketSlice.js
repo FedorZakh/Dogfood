@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-const locStorage =
-  localStorage.getItem("basket") !== null
-    ? JSON.parse(localStorage.getItem("basket")).goods
-    : [];
+
 const initialState = {
-  goods: locStorage,
+  goods: JSON.parse(localStorage.getItem("basket")).goods ?? [],
 };
 
 const basketSlice = createSlice({
@@ -18,7 +15,7 @@ const basketSlice = createSlice({
       if (productInBasket) {
         const order = productInBasket.count + payload.count;
         productInBasket.count =
-          order < payload.product.stock ? order : productInBasket.count;
+          order <= payload.product.stock ? order : productInBasket.count;
       } else {
         state.goods.push(payload);
       }

@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 export const Header = ({ setModalActive, isAuthorized }) => {
   const { favorites } = useSelector((s) => s.products);
-
+  const basket = useSelector((state) => state.basket.goods);
   const location = useLocation();
   return (
     <div className="header">
@@ -29,11 +29,16 @@ export const Header = ({ setModalActive, isAuthorized }) => {
               )}
             </Link>
 
-            <Link to={"/basket"}>
+            <Link className="link" to={"/basket"}>
               <Basket className="header__icon" />
+              {!!basket.length && (
+                <span className="header__basket">{basket.length}</span>
+              )}
             </Link>
             {isAuthorized ? (
-              <Link to={"/profile"}>Профиль</Link>
+              <Link className="link" to={"/profile"}>
+                Профиль
+              </Link>
             ) : (
               <Link to={"/login"} onClick={() => setModalActive(true)}>
                 <Profile className="header__icon" />

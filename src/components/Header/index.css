@@ -42,3 +42,22 @@
   justify-content: center;
   align-items: center;
 }
+.header__basket {
+  position: relative;
+  width: 19px;
+  height: 14px;
+  left: 60%;
+  bottom: 50%;
+  background: #01a54e;
+  border: 2px solid #ffe44d;
+  border-radius: 20px;
+  color: white;
+  font-size: 11px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link {
+  text-decoration: none;
+}
