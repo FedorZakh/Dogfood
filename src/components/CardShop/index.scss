@@ -12,6 +12,8 @@
   border: 2px solid #ffe44d;
   color: #112d49;
   background-color: #fbfef9;
+  cursor: pointer;
+  user-select: none;
 
   &__light {
     background-color: transparent;
