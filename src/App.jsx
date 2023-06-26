@@ -5,7 +5,13 @@ import { Footer } from "./components/Footer/Footer";
 import { useDebounce } from "./hooks/hooks";
 import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 import { ProductPage } from "./pages/ProductPage/ProductPage";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { FavoritesPage } from "./pages/FavoritesPage/FavoritesPage";
 import { Modal } from "./components/Modal/Modal";
 import { LoginForm } from "./components/Auth/Login/Login";
@@ -29,7 +35,7 @@ function App() {
   const navigate = useNavigate();
   const { search } = useSelector((s) => s.products);
   const debounceValueInApp = useDebounce(search);
-
+  const location = useLocation();
   useEffect(() => {
     if (debounceValueInApp === null) {
       return;
@@ -44,12 +50,15 @@ function App() {
   }, [dispatch, isAuthorized]);
 
   useEffect(() => {
+    console.log(location);
     const token = parseJwt(localStorage.getItem("token"));
     if (token && new Date() < new Date(token?.exp * 1e3)) {
       setAuth(true);
     } else {
       setModalActive(true);
-      navigate("/login");
+      if (!["/login", "/register", "/reset-pass"].includes(location.pathname)) {
+        navigate("/login");
+      }
     }
   }, [navigate]);
 
@@ -105,8 +114,9 @@ function App() {
                 </Modal>
               }
             />
+
             <Route path="/chart" element={<ChartPage />} />
-            <Route path="*" element={<div>404</div>} />
+            <Route path="*" element={<div>NOT FOUND 404</div>} />
           </Routes>
         ) : (
           <Navigate to={"/not-found"} />

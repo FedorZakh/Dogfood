@@ -8,6 +8,7 @@ import { BaseButton } from "../../Button/Button";
 import { emailRegister, passwordRegister } from "../Login/Login";
 
 export const RegisterForm = () => {
+  console.log("aaa");
   const [type, setType] = useState(true);
 
   const {

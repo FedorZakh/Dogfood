@@ -8,7 +8,7 @@ class Api {
     this.headers = data.headers;
     this.freshHeaders = freshHeaders;
   }
-  getProductList(page = 1, limit = 20) {
+  getProductList(page = 1, limit = 10) {
     return fetch(`${this.baseUrl}/products?page=${page}&limit=${limit}`, {
       method: "GET",
       ...this.freshHeaders(),
