@@ -3,7 +3,7 @@ import "../index.scss";
 import { useForm } from "react-hook-form";
 import { emailRegister, passwordRegister } from "../Login/Login";
 import { api } from "../../../utils/api";
-import Link from "antd/es/typography/Link";
+import { Link } from "react-router-dom";
 
 export const ResetPass = () => {
   const [haveToken, setHaveToken] = useState(false);

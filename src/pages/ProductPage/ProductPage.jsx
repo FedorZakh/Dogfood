@@ -38,7 +38,7 @@ export const ProductPage = () => {
       try {
         const result = await api.addProductReview(product._id, data);
         setProduct(() => ({ ...result }));
-        openNotification("success", "Успешно", "Вы вошли");
+        openNotification("success", "Успешно");
       } catch (error) {
         openNotification("error", "Ошибка", "Ваш отзыв не удалось отправить");
       }

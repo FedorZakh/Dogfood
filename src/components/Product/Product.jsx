@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import React, { useEffect, useState } from "react";
 import s from "./index.module.scss";
 import { BackNavigate } from "../BackNavigate/BackNavigate";

@@ -120,8 +120,7 @@ const config = {
   baseUrl: "https://api.react-learning.ru",
   headers: {
     "Content-Type": "application/json",
-    authorization:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDVhMDEzNWUwYmYyYzUxOWI5ZDI2MWIiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgzNjIwNDQ0LCJleHAiOjE3MTUxNTY0NDR9.KshnSKRY3dXt66pc65yEz7JOhiXnzgkSh-2adkh8Joo",
+    authorization: "",
   },
 };
 

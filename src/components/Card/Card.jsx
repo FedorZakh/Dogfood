@@ -16,6 +16,7 @@ export const Card = ({
   product,
   ...args
 }) => {
+  const quantity = product.stock;
   const { data: user } = useSelector((s) => s.user);
 
   const dispatch = useDispatch();
@@ -54,13 +55,16 @@ export const Card = ({
         </div>
         <p className="card__name">{name}</p>
       </Link>
-
-      <span
-        className="card__card btn btn_type_primary"
-        onClick={() => addToCart({ product: product, count: 1 })}
-      >
-        В Корзину
-      </span>
+      {quantity === 0 ? (
+        <h4>Товара нет</h4>
+      ) : (
+        <span
+          className="card__card btn btn_type_primary"
+          onClick={() => addToCart({ product: product, count: 1 })}
+        >
+          В Корзину
+        </span>
+      )}
     </div>
   );
 };

@@ -50,7 +50,6 @@ function App() {
   }, [dispatch, isAuthorized]);
 
   useEffect(() => {
-    console.log(location);
     const token = parseJwt(localStorage.getItem("token"));
     if (token && new Date() < new Date(token?.exp * 1e3)) {
       setAuth(true);

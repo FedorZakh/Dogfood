@@ -30,6 +30,18 @@ export const BasketPage = () => {
         }, 0)}{" "}
         рублей
       </div>
+      {JSON.parse(localStorage.getItem("basket")).goods.length > 0 && (
+        <div className="todo_btn">
+          <span
+            onClick={() => {
+              alert("Заказ принят!");
+            }}
+            className="todo__todo btn btn_type_primary"
+          >
+            заказать
+          </span>
+        </div>
+      )}
     </div>
   );
 };
