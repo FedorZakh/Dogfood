@@ -5,13 +5,7 @@ import { Footer } from "./components/Footer/Footer";
 import { useDebounce } from "./hooks/hooks";
 import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 import { ProductPage } from "./pages/ProductPage/ProductPage";
-import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { FavoritesPage } from "./pages/FavoritesPage/FavoritesPage";
 import { Modal } from "./components/Modal/Modal";
 import { LoginForm } from "./components/Auth/Login/Login";
@@ -27,15 +21,17 @@ import {
 import { parseJwt } from "./utils/utils";
 import { ChartPage } from "./pages/ChartPage/ChartPage";
 import { BasketPage } from "./pages/BasketPage/BasketPage";
+import { useLocation } from "react-router";
 
 function App() {
-  const [isAuthorized, setAuth] = useState(true);
+  const [isAuthorized, setAuth] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { search } = useSelector((s) => s.products);
   const debounceValueInApp = useDebounce(search);
   const location = useLocation();
+
   useEffect(() => {
     if (debounceValueInApp === null) {
       return;
@@ -75,11 +71,29 @@ function App() {
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/product/:id" element={<ProductPage />}></Route>
             <Route path="/basket" element={<BasketPage />} />
-
+            <Route
+              path="/login"
+              element={
+                <Modal
+                  modalActive={modalActive}
+                  setModalActive={setModalActive}
+                >
+                  <LoginForm />
+                </Modal>
+              }
+            />
             <Route
               path="/profile"
               element={<ProfilePage setModalActive={setModalActive} />}
             />
+
+            <Route path="/chart" element={<ChartPage />} />
+            <Route path="*" element={<div>404</div>} />
+          </Routes>
+        ) : (
+          <Routes>
+            <Route path="/" element={<CatalogPage />} />
+
             <Route
               path="/register"
               element={
@@ -113,12 +127,7 @@ function App() {
                 </Modal>
               }
             />
-
-            <Route path="/chart" element={<ChartPage />} />
-            <Route path="*" element={<div>NOT FOUND 404</div>} />
           </Routes>
-        ) : (
-          <Navigate to={"/not-found"} />
         )}
       </main>
       <Footer />
