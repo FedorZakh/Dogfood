@@ -86,14 +86,34 @@ function App() {
               path="/profile"
               element={<ProfilePage setModalActive={setModalActive} />}
             />
-
+            <Route
+              path="/register"
+              element={
+                <Modal
+                  modalActive={modalActive}
+                  setModalActive={setModalActive}
+                >
+                  <RegisterForm />
+                </Modal>
+              }
+            />
+            <Route
+              path="/reset-pass"
+              element={
+                <Modal
+                  modalActive={modalActive}
+                  setModalActive={setModalActive}
+                >
+                  <ResetPass />
+                </Modal>
+              }
+            />
             <Route path="/chart" element={<ChartPage />} />
             <Route path="*" element={<div>404</div>} />
           </Routes>
         ) : (
           <Routes>
             <Route path="/" element={<CatalogPage />} />
-
             <Route
               path="/register"
               element={
