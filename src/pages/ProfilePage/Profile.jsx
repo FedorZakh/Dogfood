@@ -42,7 +42,7 @@ export const ProfilePage = ({ setModalActive }) => {
       ) : (
         <div className="profile">
           <div>
-            <form className=" form-example" onSubmit={handleSubmit(sendData)}>
+            <form className="form-example" onSubmit={handleSubmit(sendData)}>
               <div>
                 <input
                   className="form__input"
@@ -62,11 +62,11 @@ export const ProfilePage = ({ setModalActive }) => {
                 />
               </div>
 
-              <BaseButton type="submit">Send</BaseButton>
+              <BaseButton type="submit">Отправить</BaseButton>
             </form>
           </div>
           <div>
-            <form className=" form-example" onSubmit={handleSubmit(sendData)}>
+            <form className="form-example" onSubmit={handleSubmit(sendData)}>
               <img
                 src={user?.avatar}
                 className="profile__avatar"
@@ -80,9 +80,9 @@ export const ProfilePage = ({ setModalActive }) => {
                   placeholder="avatar"
                 />
               </div>
-              <BaseButton type="submit">Send</BaseButton>
+              <BaseButton type="submit">Отправить аватар</BaseButton>
             </form>
-            <BaseButton onClick={logout}>Logout</BaseButton>
+            <BaseButton onClick={logout}>Выход</BaseButton>
           </div>
         </div>
       )}

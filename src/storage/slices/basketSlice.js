@@ -9,7 +9,6 @@ const initialState = {
   goods: locStorage,
 };
 
-console.log(initialState);
 const basketSlice = createSlice({
   name: "basket",
   initialState: initialState,
