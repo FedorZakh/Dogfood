@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 import { api } from "../../../utils/api";
 import { BaseButton } from "../../Button/Button";
 import { emailRegister, passwordRegister } from "../Login/Login";
-
+import { useNavigate } from "react-router-dom";
+import { openNotification } from "../../Notification/Notification";
 export const RegisterForm = () => {
   const [type, setType] = useState(true);
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,10 +19,11 @@ export const RegisterForm = () => {
 
   const sendData = async (data) => {
     try {
-      const res = await api.signup(data);
-      console.log(res);
+      await api.signup(data);
+      openNotification("success", "Вы успешно зарегистрированы!");
+      navigate("/login");
     } catch (error) {
-      alert("Ошибка!");
+      openNotification("success", `Ошибка: ${error.message}`);
     }
   };
 

@@ -8,7 +8,7 @@ import "./style.scss";
 import { BaseButton } from "../../components/Button/Button";
 import { useForm } from "react-hook-form";
 
-export const ProfilePage = ({ setModalActive }) => {
+export const ProfilePage = ({ setAuth, setModalActive }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { data: user, loading } = useSelector((s) => s.user);
@@ -31,6 +31,7 @@ export const ProfilePage = ({ setModalActive }) => {
 
   const logout = () => {
     localStorage.removeItem("token");
+    setAuth(false);
     setModalActive(true);
     navigate("/login");
   };

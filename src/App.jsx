@@ -5,7 +5,7 @@ import { Footer } from "./components/Footer/Footer";
 import { useDebounce } from "./hooks/hooks";
 import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 import { ProductPage } from "./pages/ProductPage/ProductPage";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { FavoritesPage } from "./pages/FavoritesPage/FavoritesPage";
 import { Modal } from "./components/Modal/Modal";
 import { LoginForm } from "./components/Auth/Login/Login";
@@ -71,45 +71,19 @@ function App() {
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/product/:id" element={<ProductPage />}></Route>
             <Route path="/basket" element={<BasketPage />} />
-            <Route
-              path="/login"
-              element={
-                <Modal
-                  modalActive={modalActive}
-                  setModalActive={setModalActive}
-                >
-                  <LoginForm />
-                </Modal>
-              }
-            />
+
             <Route
               path="/profile"
-              element={<ProfilePage setModalActive={setModalActive} />}
-            />
-            <Route
-              path="/register"
               element={
-                <Modal
-                  modalActive={modalActive}
+                <ProfilePage
+                  setAuth={setAuth}
                   setModalActive={setModalActive}
-                >
-                  <RegisterForm />
-                </Modal>
+                />
               }
             />
-            <Route
-              path="/reset-pass"
-              element={
-                <Modal
-                  modalActive={modalActive}
-                  setModalActive={setModalActive}
-                >
-                  <ResetPass />
-                </Modal>
-              }
-            />
+
             <Route path="/chart" element={<ChartPage />} />
-            <Route path="*" element={<div>404</div>} />
+            <Route path="*" element={<div>Страница не найдена</div>} />
           </Routes>
         ) : (
           <Routes>
