@@ -42,7 +42,7 @@ export const LoginForm = () => {
 
   return (
     <div className="incontent">
-      <h3>Login form</h3>
+      <h3>Войти или зарегистрироваться</h3>
       <form className=" form-example" onSubmit={handleSubmit(sendData)}>
         <div>
           <input

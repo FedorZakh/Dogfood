@@ -16,6 +16,9 @@
     width: 160px;
     height: 120px;
   }
+  &links a {
+    text-decoration: none;
+  }
 
   &contacts {
     display: flex;
@@ -27,4 +30,9 @@
       gap: 6px;
     }
   }
+}
+
+.social {
+  display: flex;
+  gap: 12px;
 }
