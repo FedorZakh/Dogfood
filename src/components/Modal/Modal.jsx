@@ -15,7 +15,7 @@ export const Modal = ({ setModalActive, modalActive, children }) => {
   );
 
   useEffect(() => {
-    const modal = document.getElementById("modal");
+    document.getElementById("modal");
     document.addEventListener("keydown", closeOnEsc);
 
     return () => document.removeEventListener("keydown", closeOnEsc);

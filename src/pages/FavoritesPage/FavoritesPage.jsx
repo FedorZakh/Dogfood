@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import React from "react";
 import "./index.css";
 import { BackNavigate } from "../../components/BackNavigate/BackNavigate";

@@ -58,12 +58,14 @@ export const Card = ({
       {quantity === 0 ? (
         <h4>Товара нет</h4>
       ) : (
-        <span
-          className="card__card btn btn_type_primary"
-          onClick={() => addToCart({ product: product, count: 1 })}
-        >
-          В Корзину
-        </span>
+        <>
+          <span
+            className="card__card btn btn_type_primary"
+            onClick={() => addToCart({ product: product, count: 1 })}
+          >
+            В Корзину
+          </span>
+        </>
       )}
     </div>
   );

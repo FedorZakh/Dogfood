@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
-
-import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyUser, updateUser } from "../../storage/slices/userSlice";
 import "./style.scss";

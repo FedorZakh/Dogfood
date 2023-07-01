@@ -88,6 +88,7 @@ function App() {
         ) : (
           <Routes>
             <Route path="/" element={<CatalogPage />} />
+            <Route path="/product/:id" element={<ProductPage />}></Route>
             <Route
               path="/register"
               element={
